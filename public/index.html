@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="The Grazing Outlaw serves Gilbert, Arizona with customizable wedding charcuterie cup bars, premium grazing add-ons, and made-to-order grazing experiences." name="description"/>
+<title>The Grazing Outlaw | Wedding Charcuterie in Gilbert, Arizona</title>
+<style>
+    :root{
+      --cream:#fbf7ef;
+      --paper:#fffdf8;
+      --ink:#2b241f;
+      --muted:#72675e;
+      --sage:#76836f;
+      --sage-dark:#55614f;
+      --gold:#b89454;
+      --rose:#a87567;
+      --line:#e8ddcf;
+      --shadow:0 18px 50px rgba(63,45,31,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--cream),#fff 38%,var(--cream));
+      line-height:1.55;
+    }
+    h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;line-height:1.08}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+    .nav{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(251,247,239,.90);
+      border-bottom:1px solid rgba(184,148,84,.18);
+    }
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-family:Georgia,serif;font-size:1.18rem;font-weight:700;letter-spacing:.02em}
+    .brand span{color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:20px;font-size:.92rem;color:var(--muted)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:46px;padding:0 20px;border-radius:999px;border:1px solid transparent;
+      font-weight:700;cursor:pointer;transition:.2s ease;font-size:.95rem;
+    }
+    .btn-primary{background:var(--sage-dark);color:white;box-shadow:0 10px 30px rgba(85,97,79,.22)}
+    .btn-primary:hover{transform:translateY(-1px);background:#465041}
+    .btn-soft{background:white;border-color:var(--line);color:var(--ink)}
+    .hero{padding:88px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+    .eyebrow{font-size:.77rem;text-transform:uppercase;letter-spacing:.16em;color:var(--sage-dark);font-weight:800;margin-bottom:14px}
+    h1{font-size:clamp(3rem,6vw,5.8rem);margin:.1em 0 .22em;letter-spacing:-.045em}
+    .hero p{font-size:1.08rem;color:var(--muted);max-width:650px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .hero-card{
+      background:var(--paper);border:1px solid var(--line);border-radius:34px;padding:28px;
+      box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .hero-card:before{content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:rgba(184,148,84,.13);right:-70px;top:-80px}
+    .board{height:355px;border-radius:26px;background:
+      radial-gradient(circle at 20% 25%,#fff2cb 0 9%,transparent 10%),
+      radial-gradient(circle at 43% 56%,#8b3f32 0 8%,transparent 9%),
+      radial-gradient(circle at 71% 28%,#d9b97a 0 10%,transparent 11%),
+      radial-gradient(circle at 70% 72%,#7d9965 0 7%,transparent 8%),
+      radial-gradient(circle at 25% 76%,#7e2f37 0 7%,transparent 8%),
+      linear-gradient(145deg,#c79a69,#98643f);
+      box-shadow:inset 0 0 0 10px rgba(255,255,255,.15), inset 0 0 70px rgba(60,31,13,.15);
+      position:relative;
+    }
+    .board:after{content:"The Grazing Outlaw";position:absolute;bottom:24px;left:24px;background:rgba(255,253,248,.92);padding:12px 16px;border-radius:999px;font-family:Georgia,serif;font-weight:700}
+    section{padding:76px 0}
+    .section-title{text-align:center;max-width:760px;margin:0 auto 38px}
+    .section-title h2{font-size:clamp(2.25rem,4vw,3.5rem);margin:0 0 12px}
+    .section-title p{color:var(--muted);margin:0}
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .package{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;box-shadow:0 12px 34px rgba(63,45,31,.06)}
+    .package.featured{border:1.5px solid var(--gold);transform:translateY(-8px)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#f3ead8;color:#755f34;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .price{font-family:Georgia,serif;font-size:2.8rem;margin:16px 0 2px}.price small{font-family:inherit;font-size:1rem;color:var(--muted)}
+    .package h3{font-size:1.55rem;margin:8px 0}
+    .package p{color:var(--muted)}
+    .package ul{padding-left:18px;margin:18px 0 24px}.package li{margin:8px 0}
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch}
+    .about-card,.location-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:0 12px 34px rgba(63,45,31,.06)}
+    .about-card h2,.location-card h2{font-size:clamp(2rem,3.6vw,3rem);margin:0 0 14px}
+    .about-card p,.location-card p{color:var(--muted)}
+    .location-pill{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:9px 13px;border-radius:999px;background:#f3ead8;color:#755f34;font-weight:800;font-size:.86rem}
+    .about-points{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+    .about-point{padding:12px 14px;border-radius:12px;background:#f8f2e8;border:1px solid var(--line);font-weight:700;font-size:.9rem}
+    .experience{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .step{padding:26px;border-radius:var(--radius);background:var(--paper);border:1px solid var(--line)}
+    .step-num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--sage-dark);color:#fff;font-weight:800;margin-bottom:15px}
+    .form-shell{display:grid;grid-template-columns:.82fr 1.18fr;gap:28px;align-items:start}
+    .info-panel{background:var(--sage-dark);color:white;border-radius:28px;padding:32px;position:sticky;top:96px}
+    .info-panel h2{font-size:2.5rem;margin:0 0 14px}.info-panel p{color:#e9eee6}
+    .estimate{background:rgba(255,255,255,.10);padding:20px;border-radius:18px;margin-top:24px;border:1px solid rgba(255,255,255,.18)}
+    .estimate .total{font-size:2.3rem;font-family:Georgia,serif;font-weight:700}
+    form{background:white;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+    fieldset{border:0;padding:0;margin:0 0 30px}
+    legend{font-family:Georgia,serif;font-size:1.45rem;font-weight:700;margin-bottom:14px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px}
+    input,select,textarea{width:100%;border:1px solid #d9cec1;background:#fffdf9;border-radius:12px;padding:12px 13px;font:inherit;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,148,84,.14)}
+    .choices{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .check{display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:#fffdf9}
+    .check input{width:auto;margin-top:4px}
+    .check label{margin:0;font-weight:600}
+    .helper{color:var(--muted);font-size:.84rem;margin-top:5px}
+    .package-menu{display:none}
+    .package-menu.active{display:block}
+    .menu-note{margin:-8px 0 18px;padding:12px 14px;border-radius:12px;background:#f8f2e8;border:1px solid var(--line);color:var(--muted);font-size:.9rem}
+    .choice-count{font-size:.82rem;color:var(--sage-dark);font-weight:700;margin-top:8px}
+    .check.is-disabled{opacity:.46}
+    .check.is-disabled label{cursor:not-allowed}
+    .summary{white-space:pre-wrap;background:#f8f2e8;border:1px solid var(--line);border-radius:14px;padding:14px;min-height:130px;font-size:.9rem}
+    .footer{padding:36px 0 60px;color:var(--muted);text-align:center}
+    .mini{font-size:.8rem;color:var(--muted)}
+    @media(max-width:900px){
+      .hero-grid,.form-shell,.about-grid{grid-template-columns:1fr}.packages,.experience{grid-template-columns:1fr}.package.featured{transform:none}.info-panel{position:static}.nav-links a:not(.btn){display:none}.hero{padding-top:58px}.board{height:290px}
+    }
+    @media(max-width:580px){.grid2,.choices,.payment-grid,.about-points{grid-template-columns:1fr}.wrap{width:min(100% - 20px,1160px)}form,.info-panel,.package{padding:22px}.nav-inner{height:64px}.brand{font-size:1rem}}
+  
+    .dietary-panel{background:#f8f2e8;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:28px}
+    .dietary-panel legend{margin-bottom:8px}
+    .dietary-panel .choices{margin-top:12px}
+    .diet-alert{margin-top:14px;padding:12px 14px;border-radius:12px;background:#fff8e7;border:1px solid #ead7a8;color:#66522a;font-size:.86rem}
+    .diet-status{margin-top:12px;padding:11px 13px;border-radius:12px;background:#eef3eb;border:1px solid #d8e2d3;color:var(--sage-dark);font-size:.86rem;font-weight:700}
+    .check.diet-hidden{display:none!important}
+    .dietary-alt label:after{content:" • dietary alternative";font-size:.72rem;color:var(--sage-dark);font-weight:700}
+    .payment-box{margin-top:26px;padding:22px;border-radius:18px;background:#f8f2e8;border:1px solid var(--line)}
+    .payment-box h3{font-size:1.45rem;margin:0 0 8px}
+    .payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+    .pay-choice{display:flex;gap:9px;align-items:flex-start;padding:12px;border:1px solid var(--line);background:#fffdf9;border-radius:12px}
+    .pay-choice input{width:auto;margin-top:4px}
+    .pay-choice label{margin:0}
+    .payment-due{font-family:Georgia,serif;font-size:1.8rem;font-weight:700;margin:8px 0 2px}
+    .payment-status{margin-top:12px;font-size:.88rem;color:var(--muted)}
+    .payment-status.error{color:#8b2f2f}
+    .secure-note{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:.82rem;color:var(--muted)}
+    .secure-note strong{color:var(--ink)}
+    .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none!important}
+    .success-banner{display:none;margin-bottom:18px;padding:14px 16px;border-radius:14px;background:#eef3eb;border:1px solid #d8e2d3;color:var(--sage-dark);font-weight:700}
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="wrap nav-inner">
+<a class="brand" href="#top">The Grazing <span>Outlaw</span></a>
+<div class="nav-links">
+<a href="#packages">Packages</a>
+<a href="#about">About Us</a>
+<a href="#location">Service Area</a>
+<a href="#how">How It Works</a>
+<a href="#selection">Build Your Menu</a>
+<a class="btn btn-primary" href="#selection">Get a Quote</a>
+</div>
+</div>
+</nav>
+<main id="top">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow">Gilbert, Arizona wedding charcuterie</div>
+<h1>Bold grazing, built for your celebration.</h1>
+<p>Give your guests a customizable charcuterie experience with memorable presentation, easy service, and packages designed for weddings and special events in Gilbert, Arizona.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#packages">View Packages</a>
+<a class="btn btn-soft" href="#selection">Build Your Menu</a>
+</div>
+</div>
+<div aria-label="Decorative charcuterie board illustration" class="hero-card"><div class="board"></div></div>
+</div>
+</section>
+<section id="packages">
+<div class="wrap">
+<div class="section-title">
+<div class="eyebrow">Choose your experience</div>
+<h2>Three wedding packages</h2>
+<p>From casual self-service to a premium tasting experience, each tier is designed to feel distinct and easy for guests to enjoy.</p>
+</div>
+<div class="packages">
+<article class="package">
+<span class="badge">Best for large weddings</span>
+<div class="price">$12 <small>/ guest</small></div>
+<h3>Classic Cup</h3>
+<p>A beautiful self-serve station where guests build their own cup.</p>
+<ul>
+<li>Budget-friendly cheeses and cured meats</li>
+<li>Fresh fruit, crackers, olives, pickles and sweets</li>
+<li>Disposable charcuterie cups</li>
+<li>Ingredient labels and serving utensils</li>
+</ul>
+<a class="btn btn-soft" data-package="classic" href="#selection">Choose Classic</a>
+</article>
+<article class="package featured">
+<span class="badge">Most popular</span>
+<div class="price">$16 <small>/ guest</small></div>
+<h3>Signature Cup</h3>
+<p>Guests tell your attendant what they want and each cup is made to order.</p>
+<ul>
+<li>Upgraded cheeses and charcuterie meats</li>
+<li>More fruit, breads and premium accompaniments</li>
+<li>Personalized cup assembly</li>
+<li>Upgraded table presentation</li>
+</ul>
+<a class="btn btn-primary" data-package="signature" href="#selection">Choose Signature</a>
+</article>
+<article class="package">
+<span class="badge">Premium experience</span>
+<div class="price">$20 <small>/ guest</small></div>
+<h3>Luxe Cup</h3>
+<p>A guided tasting followed by a premium made-to-order charcuterie cup.</p>
+<ul>
+<li>Premium and artisan cheeses</li>
+<li>Prosciutto and premium cured meats</li>
+<li>Pre-made tasting bites</li>
+<li>Luxury accompaniments and elevated presentation</li>
+</ul>
+<a class="btn btn-soft" data-package="luxe" href="#selection">Choose Luxe</a>
+</article>
+</div>
+</div>
+</section>
+<section id="about">
+<div class="wrap about-grid">
+<article class="about-card">
+<div class="eyebrow">About us</div>
+<h2>Meet The Grazing Outlaw.</h2>
+<p>The Grazing Outlaw creates customizable charcuterie experiences for weddings, receptions, and special celebrations. Our goal is to make grazing feel fun, welcoming, and easy for guests while giving couples a presentation that feels special enough for the day.</p>
+<p>From a relaxed self-serve cup bar to made-to-order premium cups and tasting bites, each package is designed around choice, presentation, and a smooth guest experience.</p>
+<div class="about-points">
+<div class="about-point">Customizable wedding menus</div>
+<div class="about-point">Dietary-aware selections</div>
+<div class="about-point">Made-to-order options</div>
+<div class="about-point">Wedding-day add-ons</div>
+</div>
+</article>
+<article class="location-card" id="location">
+<div class="eyebrow">Location served</div>
+<h2>Gilbert, Arizona</h2>
+<p>The Grazing Outlaw serves weddings, receptions, and special events in Gilbert, Arizona. Venue access, travel requirements, setup timing, and event-specific needs are confirmed as part of the booking process.</p>
+<div class="location-pill">📍 Serving Gilbert, Arizona</div>
+<p style="margin-top:18px"><strong>Email:</strong> <a href="mailto:thegrazingoutlaw@gmail.com">thegrazingoutlaw@gmail.com</a></p>
+<p class="mini" style="margin-top:18px">Have an event outside Gilbert? Email us before booking so travel availability and any additional travel charge can be confirmed.</p>
+</article>
+</div>
+</section>
+<section id="how">
+<div class="wrap">
+<div class="section-title">
+<div class="eyebrow">Simple from start to finish</div>
+<h2>How it works</h2>
+</div>
+<div class="experience">
+<div class="step"><div class="step-num">1</div><h3>Choose a package</h3><p>Select Classic, Signature, or Luxe based on your guest experience and budget.</p></div>
+<div class="step"><div class="step-num">2</div><h3>Choose your menu</h3><p>Tell us about dietary or allergy needs first, then choose from the automatically adjusted cheeses, meats, fruits, crackers and accompaniments.</p></div>
+<div class="step"><div class="step-num">3</div><h3>We bring the experience</h3><p>Your charcuterie station is prepared for your wedding and served according to the package you selected.</p></div>
+</div>
+</div>
+</section>
+<section id="selection">
+<div class="wrap form-shell">
+<aside class="info-panel">
+<div class="eyebrow" style="color:#d9c394">Instant estimate</div>
+<h2>Build your wedding menu.</h2>
+<p>Use the form to choose your package, menu preferences, and special add-ons. Every booking includes a $100 setup fee, and your estimate updates automatically.</p>
+<div class="estimate">
+<div class="mini" style="color:#dfe5dc">ESTIMATED PACKAGE TOTAL</div>
+<div class="total" id="total">$0</div>
+<div id="estimateDetail">Choose a package and guest count.</div>
+</div>
+<p class="mini" style="color:#dfe5dc;margin-top:18px">Estimate includes the selected package, a required $100 setup fee, and any special add-ons selected below. Delivery, travel, venue requirements, taxes, rentals and extra staffing may be quoted separately.</p>
+</aside>
+<form id="menuForm">
+<div class="success-banner" id="successBanner">Payment received. Thank you for booking with The Grazing Outlaw</div>
+<fieldset>
+<legend>Wedding details</legend>
+<div class="grid2">
+<div><label for="names">Couple / Client Names</label><input id="names" name="names" placeholder="Alex &amp; Jordan" required/></div>
+<div><label for="date">Wedding Date</label><input id="date" name="date" type="date" required/></div>
+<div><label for="guests">Estimated Guest Count</label><input id="guests" min="1" name="guests" placeholder="100" type="number"/></div>
+<div><label for="venue">Venue</label><input id="venue" name="venue" placeholder="Venue name"/></div>
+<div><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required/></div>
+<div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="(555) 555-5555" autocomplete="tel"/></div>
+</div>
+</fieldset>
+<fieldset>
+<legend>Choose your package</legend>
+<div class="choices">
+<div class="check"><input data-price="12" id="classic" name="package" type="radio" value="classic"/><label for="classic">Classic — $12 per guest</label></div>
+<div class="check"><input data-price="16" id="signature" name="package" type="radio" value="signature"/><label for="signature">Signature — $16 per guest</label></div>
+<div class="check"><input data-price="20" id="luxe" name="package" type="radio" value="luxe"/><label for="luxe">Luxe — $20 per guest</label></div>
+</div>
+<p class="helper"><strong>$100 setup fee applies to every event.</strong> It covers station setup and standard breakdown.</p>
+</fieldset>
+<fieldset id="promoCodeSection">
+<legend>Promo code</legend>
+<p class="helper">Enter any promo code you received here. The same box accepts the one-time <strong>Classic $5-per-guest code</strong> and either one-time <strong>full-free booking code</strong>. The site will automatically apply the correct offer.</p>
+<div class="grid2">
+<div><label for="anyPromoCode">Promo code</label><input id="anyPromoCode" name="promoCode" autocomplete="off" placeholder="Enter promo code"/></div>
+<div style="display:flex;align-items:end"><button class="btn btn-soft" id="applyAnyCodeBtn" type="button" style="width:100%">Apply Code</button></div>
+</div>
+<div class="diet-status" id="codeStatus">Enter your promo code and select Apply Code.</div>
+</fieldset>
+<fieldset class="dietary-panel" id="dietaryNeeds">
+<legend>Dietary &amp; allergy needs</legend>
+<p class="helper">Select every restriction that should apply. Your ingredient choices below will automatically switch to compatible options where possible.</p>
+<div class="choices">
+<div class="check"><input data-filter="vegetarian" id="vegetarian" name="diet" type="checkbox" value="Vegetarian"/><label for="vegetarian">Vegetarian</label></div>
+<div class="check"><input data-filter="vegan" id="vegan" name="diet" type="checkbox" value="Vegan"/><label for="vegan">Vegan</label></div>
+<div class="check"><input data-filter="porkfree" id="porkfree" name="diet" type="checkbox" value="Pork-free"/><label for="porkfree">Pork-free</label></div>
+<div class="check"><input data-filter="gluten" id="gluten" name="diet" type="checkbox" value="Gluten-free / wheat-sensitive"/><label for="gluten">Gluten-free / wheat-sensitive</label></div>
+<div class="check"><input data-filter="nutfree" id="nutfree" name="diet" type="checkbox" value="Nut-free"/><label for="nutfree">Nut-free</label></div>
+</div>
+<div style="margin-top:14px"><label for="allergies">Other food allergies or dietary notes</label><textarea id="allergies" placeholder="Example: sesame allergy, egg allergy, soy allergy, or another restriction not listed above." rows="3"></textarea></div>
+<div class="diet-status" id="dietStatus">No dietary filters selected. The standard package menu will be shown.</div>
+<div class="diet-alert"><strong>Allergy notice:</strong> Menu filtering helps with ingredient selection but does not guarantee an allergen-free environment. Cross-contact can occur during sourcing, preparation, transport, or service. Severe allergies should be confirmed directly before booking.</div>
+</fieldset><div id="packageMenus">
+<div class="menu-note" id="menuPlaceholder">Choose a package above to see the complete ingredient selection for that package.</div>
+<div class="package-menu" data-menu-package="classic">
+<div class="menu-note"><strong>Classic — $12 per guest:</strong> Self-serve. Choose 3 cheeses, 3 meats, 2 fruits, 2 crunchy items, and 2 accompaniments.</div>
+<fieldset data-default-legend="Classic cheeses — choose 3" data-limit-group="classic-cheese" data-max="3" data-role="cheese">
+<legend>Classic cheeses — choose 3</legend>
+<div class="choices">
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="c-mild-cheddar" name="menu" type="checkbox" value="Mild Cheddar"/><label for="c-mild-cheddar">Mild Cheddar</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="c-sharp-cheddar" name="menu" type="checkbox" value="Sharp Cheddar"/><label for="c-sharp-cheddar">Sharp Cheddar</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="c-colby" name="menu" type="checkbox" value="Colby Jack"/><label for="c-colby">Colby Jack</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="c-monterey" name="menu" type="checkbox" value="Monterey Jack"/><label for="c-monterey">Monterey Jack</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="c-pepperjack" name="menu" type="checkbox" value="Pepper Jack"/><label for="c-pepperjack">Pepper Jack</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="c-mozzarella" name="menu" type="checkbox" value="Mozzarella"/><label for="c-mozzarella">Mozzarella</label></div>
+<div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="c-df-cheddar" name="menu" type="checkbox" value="Nut-Free Plant-Based Cheddar Style"/><label for="c-df-cheddar">Nut-Free Plant-Based Cheddar Style</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="c-df-pepperjack" name="menu" type="checkbox" value="Nut-Free Plant-Based Pepper Jack Style"/><label for="c-df-pepperjack">Nut-Free Plant-Based Pepper Jack Style</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="c-df-mozzarella" name="menu" type="checkbox" value="Nut-Free Plant-Based Mozzarella Style"/><label for="c-df-mozzarella">Nut-Free Plant-Based Mozzarella Style</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="c-df-herb" name="menu" type="checkbox" value="Nut-Free Plant-Based Herb Cheese Style"/><label for="c-df-herb">Nut-Free Plant-Based Herb Cheese Style</label></div></div><div class="choice-count"></div>
+</fieldset>
+<fieldset data-default-legend="Classic meats — choose 3" data-limit-group="classic-meat" data-max="3" data-role="meat">
+<legend>Classic meats — choose 3</legend>
+<div class="choices">
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="c-pepperoni" name="menu" type="checkbox" value="Pepperoni"/><label for="c-pepperoni">Pepperoni</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="c-summer" name="menu" type="checkbox" value="Summer Sausage"/><label for="c-summer">Summer Sausage</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="c-genoa" name="menu" type="checkbox" value="Genoa Salami"/><label for="c-genoa">Genoa Salami</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="c-hard-salami" name="menu" type="checkbox" value="Hard Salami"/><label for="c-hard-salami">Hard Salami</label></div>
+<div class="check"><input data-avoid="vegetarian vegan" data-category="Meats" id="c-turkey" name="menu" type="checkbox" value="Turkey Sausage"/><label for="c-turkey">Turkey Sausage</label></div>
+<div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="c-veg-pepper" name="menu" type="checkbox" value="Roasted Red Pepper Bites"/><label for="c-veg-pepper">Roasted Red Pepper Bites</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="c-veg-artichoke" name="menu" type="checkbox" value="Marinated Artichoke Hearts"/><label for="c-veg-artichoke">Marinated Artichoke Hearts</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="c-veg-cucumber" name="menu" type="checkbox" value="Seasoned Cucumber Bites"/><label for="c-veg-cucumber">Seasoned Cucumber Bites</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="c-veg-plantpep" name="menu" type="checkbox" value="Plant-Based Pepperoni"/><label for="c-veg-plantpep">Plant-Based Pepperoni</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="c-pf-beefsalami" name="menu" type="checkbox" value="Pork-Free Beef Salami"/><label for="c-pf-beefsalami">Pork-Free Beef Salami</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="c-pf-turkeypep" name="menu" type="checkbox" value="Turkey Pepperoni"/><label for="c-pf-turkeypep">Turkey Pepperoni</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="c-pf-beefsummer" name="menu" type="checkbox" value="Beef Summer Sausage"/><label for="c-pf-beefsummer">Beef Summer Sausage</label></div></div><div class="choice-count"></div>
+</fieldset>
+<fieldset data-default-legend="Fresh fruit — choose 2" data-limit-group="classic-fruit" data-max="2" data-role="other">
+<legend>Fresh fruit — choose 2</legend>
+<div class="choices">
+<div class="check"><input data-category="Fresh Fruit" id="c-green-grapes" name="menu" type="checkbox" value="Green Grapes"/><label for="c-green-grapes">Green Grapes</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="c-red-grapes" name="menu" type="checkbox" value="Red Grapes"/><label for="c-red-grapes">Red Grapes</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="c-strawberries" name="menu" type="checkbox" value="Strawberries"/><label for="c-strawberries">Strawberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="c-apples" name="menu" type="checkbox" value="Apple Slices"/><label for="c-apples">Apple Slices</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="c-seasonal-fruit" name="menu" type="checkbox" value="Seasonal Fruit"/><label for="c-seasonal-fruit">Seasonal Fruit</label></div>
+</div><div class="choice-count"></div>
+</fieldset>
+<fieldset data-default-legend="Crunchy items — choose 2" data-limit-group="classic-crunch" data-max="2" data-role="crackers">
+<legend>Crunchy items — choose 2</legend>
+<div class="choices">
+<div class="check"><input data-avoid="gluten" data-category="Crackers / Crunch" id="c-butter-crackers" name="menu" type="checkbox" value="Butter Crackers"/><label for="c-butter-crackers">Butter Crackers</label></div>
+<div class="check"><input data-avoid="gluten" data-category="Crackers / Crunch" id="c-wheat-crackers" name="menu" type="checkbox" value="Wheat Crackers"/><label for="c-wheat-crackers">Wheat Crackers</label></div>
+<div class="check"><input data-avoid="gluten" data-category="Crackers / Crunch" id="c-pretzels" name="menu" type="checkbox" value="Pretzels"/><label for="c-pretzels">Pretzels</label></div>
+<div class="check"><input data-avoid="gluten" data-category="Crackers / Crunch" id="c-breadsticks" name="menu" type="checkbox" value="Breadsticks"/><label for="c-breadsticks">Breadsticks</label></div>
+<div class="check dietary-alt"><input data-category="Crackers / Crunch" data-show-when="gluten" id="c-gf-rice" name="menu" type="checkbox" value="Gluten-Free Rice Crackers"/><label for="c-gf-rice">Gluten-Free Rice Crackers</label></div><div class="check dietary-alt"><input data-category="Crackers / Crunch" data-show-when="gluten" id="c-gf-seed" name="menu" type="checkbox" value="Gluten-Free Seed Crackers"/><label for="c-gf-seed">Gluten-Free Seed Crackers</label></div><div class="check dietary-alt"><input data-category="Crackers / Crunch" data-show-when="gluten" id="c-gf-pretzel" name="menu" type="checkbox" value="Gluten-Free Pretzel Crisps"/><label for="c-gf-pretzel">Gluten-Free Pretzel Crisps</label></div></div><div class="choice-count"></div>
+</fieldset>
+<fieldset data-default-legend="Accompaniments — choose 2" data-limit-group="classic-accomp" data-max="2" data-role="accomp">
+<legend>Accompaniments — choose 2</legend>
+<div class="choices">
+<div class="check"><input data-category="Accompaniments" id="c-green-olives" name="menu" type="checkbox" value="Green Olives"/><label for="c-green-olives">Green Olives</label></div>
+<div class="check"><input data-category="Accompaniments" id="c-black-olives" name="menu" type="checkbox" value="Black Olives"/><label for="c-black-olives">Black Olives</label></div>
+<div class="check"><input data-category="Accompaniments" id="c-pickles" name="menu" type="checkbox" value="Pickles"/><label for="c-pickles">Pickles</label></div>
+<div class="check"><input data-category="Accompaniments" id="c-cranberries" name="menu" type="checkbox" value="Dried Cranberries"/><label for="c-cranberries">Dried Cranberries</label></div>
+<div class="check"><input data-category="Accompaniments" id="c-apricots" name="menu" type="checkbox" value="Dried Apricots"/><label for="c-apricots">Dried Apricots</label></div>
+<div class="check"><input data-avoid="nutfree" data-category="Accompaniments" id="c-mixed-nuts" name="menu" type="checkbox" value="Mixed Nuts"/><label for="c-mixed-nuts">Mixed Nuts</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Accompaniments" id="c-chocolate" name="menu" type="checkbox" value="Chocolate Pieces"/><label for="c-chocolate">Chocolate Pieces</label></div>
+<div class="check dietary-alt"><input data-category="Accompaniments" data-show-when="vegan" id="c-df-choc" name="menu" type="checkbox" value="Vegan Dark Chocolate"/><label for="c-df-choc">Vegan Dark Chocolate</label></div></div><div class="choice-count"></div>
+</fieldset>
+</div>
+<div class="package-menu" data-menu-package="signature">
+<div class="menu-note"><strong>Signature — $16 per guest:</strong> Made to order by an attendant. Choose 4 cheeses, 4 meats, 3 fruits, 2 crackers/breads, and 3 accompaniments.</div>
+<fieldset data-default-legend="Signature cheeses — choose 4" data-limit-group="signature-cheese" data-max="4" data-role="cheese"><legend>Signature cheeses — choose 4</legend><div class="choices">
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-white-cheddar" name="menu" type="checkbox" value="Sharp White Cheddar"/><label for="s-white-cheddar">Sharp White Cheddar</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-smoked-gouda" name="menu" type="checkbox" value="Smoked Gouda"/><label for="s-smoked-gouda">Smoked Gouda</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-havarti" name="menu" type="checkbox" value="Havarti"/><label for="s-havarti">Havarti</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-brie" name="menu" type="checkbox" value="Brie"/><label for="s-brie">Brie</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-pepperjack" name="menu" type="checkbox" value="Pepper Jack"/><label for="s-pepperjack">Pepper Jack</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-provolone" name="menu" type="checkbox" value="Provolone"/><label for="s-provolone">Provolone</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-mozzarella" name="menu" type="checkbox" value="Mozzarella Pearls"/><label for="s-mozzarella">Mozzarella Pearls</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Cheeses" id="s-goat" name="menu" type="checkbox" value="Goat Cheese"/><label for="s-goat">Goat Cheese</label></div>
+<div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="s-df-cheddar" name="menu" type="checkbox" value="Nut-Free Plant-Based Sharp Cheddar Style"/><label for="s-df-cheddar">Nut-Free Plant-Based Sharp Cheddar Style</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="s-df-gouda" name="menu" type="checkbox" value="Nut-Free Plant-Based Smoked Gouda Style"/><label for="s-df-gouda">Nut-Free Plant-Based Smoked Gouda Style</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="s-df-mozz" name="menu" type="checkbox" value="Nut-Free Plant-Based Mozzarella Style"/><label for="s-df-mozz">Nut-Free Plant-Based Mozzarella Style</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="s-df-herb" name="menu" type="checkbox" value="Nut-Free Plant-Based Herb Spread"/><label for="s-df-herb">Nut-Free Plant-Based Herb Spread</label></div><div class="check dietary-alt"><input data-category="Cheeses" data-show-when="vegan" id="s-df-pepper" name="menu" type="checkbox" value="Nut-Free Plant-Based Pepper Jack Style"/><label for="s-df-pepper">Nut-Free Plant-Based Pepper Jack Style</label></div></div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Signature meats — choose 4" data-limit-group="signature-meat" data-max="4" data-role="meat"><legend>Signature meats — choose 4</legend><div class="choices">
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="s-genoa" name="menu" type="checkbox" value="Genoa Salami"/><label for="s-genoa">Genoa Salami</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="s-soppressata" name="menu" type="checkbox" value="Soppressata"/><label for="s-soppressata">Soppressata</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="s-capocollo" name="menu" type="checkbox" value="Capocollo"/><label for="s-capocollo">Capocollo</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="s-pepperoni" name="menu" type="checkbox" value="Pepperoni"/><label for="s-pepperoni">Pepperoni</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="s-prosciutto" name="menu" type="checkbox" value="Prosciutto"/><label for="s-prosciutto">Prosciutto</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Meats" id="s-summer" name="menu" type="checkbox" value="Summer Sausage"/><label for="s-summer">Summer Sausage</label></div>
+<div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="s-veg-salami" name="menu" type="checkbox" value="Plant-Based Salami"/><label for="s-veg-salami">Plant-Based Salami</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="s-veg-artichoke" name="menu" type="checkbox" value="Marinated Artichoke Hearts"/><label for="s-veg-artichoke">Marinated Artichoke Hearts</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="s-veg-roasted" name="menu" type="checkbox" value="Roasted Red Pepper Bites"/><label for="s-veg-roasted">Roasted Red Pepper Bites</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="s-veg-hummus" name="menu" type="checkbox" value="Hummus Cucumber Bites"/><label for="s-veg-hummus">Hummus Cucumber Bites</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="s-veg-stuffed" name="menu" type="checkbox" value="Herb-Stuffed Mini Peppers"/><label for="s-veg-stuffed">Herb-Stuffed Mini Peppers</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="s-pf-bresaola" name="menu" type="checkbox" value="Bresaola (Cured Beef)"/><label for="s-pf-bresaola">Bresaola (Cured Beef)</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="s-pf-beefsalami" name="menu" type="checkbox" value="Pork-Free Beef Salami"/><label for="s-pf-beefsalami">Pork-Free Beef Salami</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="s-pf-turkeysalami" name="menu" type="checkbox" value="Turkey Salami"/><label for="s-pf-turkeysalami">Turkey Salami</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="s-pf-turkeypep" name="menu" type="checkbox" value="Turkey Pepperoni"/><label for="s-pf-turkeypep">Turkey Pepperoni</label></div><div class="check dietary-alt"><input data-category="Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="s-pf-smokedturkey" name="menu" type="checkbox" value="Smoked Turkey Bites"/><label for="s-pf-smokedturkey">Smoked Turkey Bites</label></div></div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Fresh fruit — choose 3" data-limit-group="signature-fruit" data-max="3" data-role="other"><legend>Fresh fruit — choose 3</legend><div class="choices">
+<div class="check"><input data-category="Fresh Fruit" id="s-green-grapes" name="menu" type="checkbox" value="Green Grapes"/><label for="s-green-grapes">Green Grapes</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="s-red-grapes" name="menu" type="checkbox" value="Red Grapes"/><label for="s-red-grapes">Red Grapes</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="s-strawberries" name="menu" type="checkbox" value="Strawberries"/><label for="s-strawberries">Strawberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="s-blueberries" name="menu" type="checkbox" value="Blueberries"/><label for="s-blueberries">Blueberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="s-blackberries" name="menu" type="checkbox" value="Blackberries"/><label for="s-blackberries">Blackberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="s-apples" name="menu" type="checkbox" value="Apple Slices"/><label for="s-apples">Apple Slices</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="s-seasonal" name="menu" type="checkbox" value="Seasonal Fruit"/><label for="s-seasonal">Seasonal Fruit</label></div>
+</div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Crackers / breads — choose 2" data-limit-group="signature-bread" data-max="2" data-role="other"><legend>Crackers / breads — choose 2</legend><div class="choices">
+<div class="check"><input data-category="Crackers / Breads" id="s-artisan-crackers" name="menu" type="checkbox" value="Artisan Crackers"/><label for="s-artisan-crackers">Artisan Crackers</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="s-wheat-crackers" name="menu" type="checkbox" value="Wheat Crackers"/><label for="s-wheat-crackers">Wheat Crackers</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="s-butter-crackers" name="menu" type="checkbox" value="Butter Crackers"/><label for="s-butter-crackers">Butter Crackers</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="s-baguette" name="menu" type="checkbox" value="Baguette Crisps"/><label for="s-baguette">Baguette Crisps</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="s-breadsticks" name="menu" type="checkbox" value="Breadsticks"/><label for="s-breadsticks">Breadsticks</label></div>
+</div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Accompaniments — choose 3" data-limit-group="signature-accomp" data-max="3" data-role="accomp"><legend>Accompaniments — choose 3</legend><div class="choices">
+<div class="check"><input data-category="Accompaniments" id="s-cornichons" name="menu" type="checkbox" value="Cornichons"/><label for="s-cornichons">Cornichons</label></div>
+<div class="check"><input data-category="Accompaniments" id="s-olives" name="menu" type="checkbox" value="Marinated Olives"/><label for="s-olives">Marinated Olives</label></div>
+<div class="check"><input data-avoid="nutfree" data-category="Accompaniments" id="s-mixed-nuts" name="menu" type="checkbox" value="Mixed Nuts"/><label for="s-mixed-nuts">Mixed Nuts</label></div>
+<div class="check"><input data-avoid="nutfree" data-category="Accompaniments" id="s-candied-nuts" name="menu" type="checkbox" value="Candied Nuts"/><label for="s-candied-nuts">Candied Nuts</label></div>
+<div class="check"><input data-category="Accompaniments" id="s-apricots" name="menu" type="checkbox" value="Dried Apricots"/><label for="s-apricots">Dried Apricots</label></div>
+<div class="check"><input data-category="Accompaniments" id="s-cranberries" name="menu" type="checkbox" value="Dried Cranberries"/><label for="s-cranberries">Dried Cranberries</label></div>
+<div class="check"><input data-category="Accompaniments" id="s-fig" name="menu" type="checkbox" value="Fig Preserves"/><label for="s-fig">Fig Preserves</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Accompaniments" id="s-honey" name="menu" type="checkbox" value="Honey"/><label for="s-honey">Honey</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Accompaniments" id="s-dark-chocolate" name="menu" type="checkbox" value="Dark Chocolate"/><label for="s-dark-chocolate">Dark Chocolate</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Accompaniments" id="s-milk-chocolate" name="menu" type="checkbox" value="Milk Chocolate"/><label for="s-milk-chocolate">Milk Chocolate</label></div>
+<div class="check dietary-alt"><input data-category="Accompaniments" data-show-when="vegan" id="s-df-choc" name="menu" type="checkbox" value="Vegan Dark Chocolate"/><label for="s-df-choc">Vegan Dark Chocolate</label></div><div class="check dietary-alt"><input data-category="Accompaniments" data-show-when="vegan" id="s-vegan-syrup" name="menu" type="checkbox" value="Agave Drizzle"/><label for="s-vegan-syrup">Agave Drizzle</label></div></div><div class="choice-count"></div></fieldset>
+</div>
+<div class="package-menu" data-menu-package="luxe">
+<div class="menu-note"><strong>Luxe — $20 per guest:</strong> Premium tasting + made-to-order cups. Choose 5 premium cheeses, 5 meats, 4 fruits, 3 crackers/breads, 4 accompaniments, and up to 3 tasting combinations.</div>
+<fieldset data-default-legend="Premium cheeses — choose 5" data-limit-group="luxe-cheese" data-max="5" data-role="cheese"><legend>Premium cheeses — choose 5</legend><div class="choices">
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-aged-gouda" name="menu" type="checkbox" value="Aged Gouda"/><label for="l-aged-gouda">Aged Gouda</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-manchego" name="menu" type="checkbox" value="Manchego"/><label for="l-manchego">Manchego</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-triple-brie" name="menu" type="checkbox" value="Triple-Cream Brie"/><label for="l-triple-brie">Triple-Cream Brie</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-goat" name="menu" type="checkbox" value="Goat Cheese"/><label for="l-goat">Goat Cheese</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-gruyere" name="menu" type="checkbox" value="Gruyère"/><label for="l-gruyere">Gruyère</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-smoked-gouda" name="menu" type="checkbox" value="Smoked Gouda"/><label for="l-smoked-gouda">Smoked Gouda</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-white-cheddar" name="menu" type="checkbox" value="Aged White Cheddar"/><label for="l-white-cheddar">Aged White Cheddar</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-havarti" name="menu" type="checkbox" value="Havarti"/><label for="l-havarti">Havarti</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Cheeses" id="l-seasonal-cheese" name="menu" type="checkbox" value="Specialty Seasonal Cheese"/><label for="l-seasonal-cheese">Specialty Seasonal Cheese</label></div>
+<div class="check dietary-alt"><input data-category="Premium Cheeses" data-show-when="vegan" id="l-df-cheddar" name="menu" type="checkbox" value="Nut-Free Artisan Plant-Based Aged Cheddar Style"/><label for="l-df-cheddar">Nut-Free Artisan Plant-Based Aged Cheddar Style</label></div><div class="check dietary-alt"><input data-category="Premium Cheeses" data-show-when="vegan" id="l-df-gouda" name="menu" type="checkbox" value="Nut-Free Artisan Plant-Based Smoked Gouda Style"/><label for="l-df-gouda">Nut-Free Artisan Plant-Based Smoked Gouda Style</label></div><div class="check dietary-alt"><input data-category="Premium Cheeses" data-show-when="vegan" id="l-df-brie" name="menu" type="checkbox" value="Nut-Free Plant-Based Brie Style"/><label for="l-df-brie">Nut-Free Plant-Based Brie Style</label></div><div class="check dietary-alt"><input data-category="Premium Cheeses" data-show-when="vegan" id="l-df-herb" name="menu" type="checkbox" value="Nut-Free Plant-Based Herb Chèvre Style"/><label for="l-df-herb">Nut-Free Plant-Based Herb Chèvre Style</label></div><div class="check dietary-alt"><input data-category="Premium Cheeses" data-show-when="vegan" id="l-df-pepper" name="menu" type="checkbox" value="Nut-Free Plant-Based Pepper Jack Style"/><label for="l-df-pepper">Nut-Free Plant-Based Pepper Jack Style</label></div><div class="check dietary-alt"><input data-category="Premium Cheeses" data-show-when="vegan" id="l-df-mozz" name="menu" type="checkbox" value="Nut-Free Plant-Based Mozzarella Style"/><label for="l-df-mozz">Nut-Free Plant-Based Mozzarella Style</label></div></div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Premium meats — choose 5" data-limit-group="luxe-meat" data-max="5" data-role="meat"><legend>Premium meats — choose 5</legend><div class="choices">
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-prosciutto" name="menu" type="checkbox" value="Prosciutto"/><label for="l-prosciutto">Prosciutto</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-parma" name="menu" type="checkbox" value="Prosciutto di Parma"/><label for="l-parma">Prosciutto di Parma</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-artisan-salami" name="menu" type="checkbox" value="Artisan Salami"/><label for="l-artisan-salami">Artisan Salami</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-soppressata" name="menu" type="checkbox" value="Soppressata"/><label for="l-soppressata">Soppressata</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-capocollo" name="menu" type="checkbox" value="Capocollo"/><label for="l-capocollo">Capocollo</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-genoa" name="menu" type="checkbox" value="Genoa Salami"/><label for="l-genoa">Genoa Salami</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Premium Meats" id="l-specialty-sausage" name="menu" type="checkbox" value="Specialty Cured Sausage"/><label for="l-specialty-sausage">Specialty Cured Sausage</label></div>
+<div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="l-veg-salami" name="menu" type="checkbox" value="Artisan Plant-Based Salami"/><label for="l-veg-salami">Artisan Plant-Based Salami</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="l-veg-mushroom" name="menu" type="checkbox" value="Truffle-Marinated Mushrooms"/><label for="l-veg-mushroom">Truffle-Marinated Mushrooms</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="l-veg-artichoke" name="menu" type="checkbox" value="Marinated Artichoke Hearts"/><label for="l-veg-artichoke">Marinated Artichoke Hearts</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="l-veg-peppers" name="menu" type="checkbox" value="Fire-Roasted Pepper Bites"/><label for="l-veg-peppers">Fire-Roasted Pepper Bites</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="l-veg-hummus" name="menu" type="checkbox" value="Herbed Hummus Cucumber Bites"/><label for="l-veg-hummus">Herbed Hummus Cucumber Bites</label></div><div class="check dietary-alt"><input data-category="Savory Alternatives" data-show-when="vegetarian vegan" id="l-veg-antipasto" name="menu" type="checkbox" value="Premium Vegetable Antipasto"/><label for="l-veg-antipasto">Premium Vegetable Antipasto</label></div><div class="check dietary-alt"><input data-category="Premium Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="l-pf-bresaola" name="menu" type="checkbox" value="Bresaola (Premium Cured Beef)"/><label for="l-pf-bresaola">Bresaola (Premium Cured Beef)</label></div><div class="check dietary-alt"><input data-category="Premium Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="l-pf-beefsalami" name="menu" type="checkbox" value="Artisan Pork-Free Beef Salami"/><label for="l-pf-beefsalami">Artisan Pork-Free Beef Salami</label></div><div class="check dietary-alt"><input data-category="Premium Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="l-pf-turkeysalami" name="menu" type="checkbox" value="Artisan Turkey Salami"/><label for="l-pf-turkeysalami">Artisan Turkey Salami</label></div><div class="check dietary-alt"><input data-category="Premium Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="l-pf-turkeyprosciutto" name="menu" type="checkbox" value="Turkey Prosciutto-Style Slices"/><label for="l-pf-turkeyprosciutto">Turkey Prosciutto-Style Slices</label></div><div class="check dietary-alt"><input data-category="Premium Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="l-pf-smokedturkey" name="menu" type="checkbox" value="Premium Smoked Turkey Bites"/><label for="l-pf-smokedturkey">Premium Smoked Turkey Bites</label></div><div class="check dietary-alt"><input data-category="Premium Meats" data-hide-when="vegetarian vegan" data-show-when="porkfree" id="l-pf-beefsummer" name="menu" type="checkbox" value="Premium Beef Summer Sausage"/><label for="l-pf-beefsummer">Premium Beef Summer Sausage</label></div></div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Fresh fruit — choose 4" data-limit-group="luxe-fruit" data-max="4" data-role="other"><legend>Fresh fruit — choose 4</legend><div class="choices">
+<div class="check"><input data-category="Fresh Fruit" id="l-green-grapes" name="menu" type="checkbox" value="Green Grapes"/><label for="l-green-grapes">Green Grapes</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-red-grapes" name="menu" type="checkbox" value="Red Grapes"/><label for="l-red-grapes">Red Grapes</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-strawberries" name="menu" type="checkbox" value="Strawberries"/><label for="l-strawberries">Strawberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-blueberries" name="menu" type="checkbox" value="Blueberries"/><label for="l-blueberries">Blueberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-blackberries" name="menu" type="checkbox" value="Blackberries"/><label for="l-blackberries">Blackberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-raspberries" name="menu" type="checkbox" value="Raspberries"/><label for="l-raspberries">Raspberries</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-figs" name="menu" type="checkbox" value="Fresh Figs (when available)"/><label for="l-figs">Fresh Figs — when available</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-pear" name="menu" type="checkbox" value="Pear Slices"/><label for="l-pear">Pear Slices</label></div>
+<div class="check"><input data-category="Fresh Fruit" id="l-seasonal-fruit" name="menu" type="checkbox" value="Seasonal Premium Fruit"/><label for="l-seasonal-fruit">Seasonal Premium Fruit</label></div>
+</div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Crackers / breads — choose 3" data-limit-group="luxe-bread" data-max="3" data-role="other"><legend>Crackers / breads — choose 3</legend><div class="choices">
+<div class="check"><input data-category="Crackers / Breads" id="l-artisan-crackers" name="menu" type="checkbox" value="Artisan Crackers"/><label for="l-artisan-crackers">Artisan Crackers</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="l-crostini" name="menu" type="checkbox" value="Crostini"/><label for="l-crostini">Crostini</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="l-baguette" name="menu" type="checkbox" value="Baguette Crisps"/><label for="l-baguette">Baguette Crisps</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="l-seeded" name="menu" type="checkbox" value="Seeded Crackers"/><label for="l-seeded">Seeded Crackers</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="l-breadsticks" name="menu" type="checkbox" value="Breadsticks"/><label for="l-breadsticks">Breadsticks</label></div>
+<div class="check"><input data-category="Crackers / Breads" id="l-specialty-crackers" name="menu" type="checkbox" value="Specialty Crackers"/><label for="l-specialty-crackers">Specialty Crackers</label></div>
+</div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Premium accompaniments — choose 4" data-limit-group="luxe-accomp" data-max="4" data-role="accomp"><legend>Premium accompaniments — choose 4</legend><div class="choices">
+<div class="check"><input data-avoid="nutfree" data-category="Premium Accompaniments" id="l-marcona" name="menu" type="checkbox" value="Marcona Almonds"/><label for="l-marcona">Marcona Almonds</label></div>
+<div class="check"><input data-avoid="nutfree" data-category="Premium Accompaniments" id="l-pecans" name="menu" type="checkbox" value="Candied Pecans"/><label for="l-pecans">Candied Pecans</label></div>
+<div class="check"><input data-avoid="nutfree" data-category="Premium Accompaniments" id="l-pistachios" name="menu" type="checkbox" value="Pistachios"/><label for="l-pistachios">Pistachios</label></div>
+<div class="check"><input data-category="Premium Accompaniments" id="l-gourmet-olives" name="menu" type="checkbox" value="Gourmet Olives"/><label for="l-gourmet-olives">Gourmet Olives</label></div>
+<div class="check"><input data-category="Premium Accompaniments" id="l-cornichons" name="menu" type="checkbox" value="Cornichons"/><label for="l-cornichons">Cornichons</label></div>
+<div class="check"><input data-category="Premium Accompaniments" id="l-fig-preserves" name="menu" type="checkbox" value="Fig Preserves"/><label for="l-fig-preserves">Fig Preserves</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Accompaniments" id="l-hot-honey" name="menu" type="checkbox" value="Hot Honey"/><label for="l-hot-honey">Hot Honey</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Accompaniments" id="l-local-honey" name="menu" type="checkbox" value="Local Honey"/><label for="l-local-honey">Local Honey</label></div>
+<div class="check"><input data-category="Premium Accompaniments" id="l-fruit-preserves" name="menu" type="checkbox" value="Fruit Preserves"/><label for="l-fruit-preserves">Fruit Preserves</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Accompaniments" id="l-dark-chocolate" name="menu" type="checkbox" value="Dark Chocolate"/><label for="l-dark-chocolate">Dark Chocolate</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Premium Accompaniments" id="l-truffles" name="menu" type="checkbox" value="Chocolate Truffles"/><label for="l-truffles">Chocolate Truffles</label></div>
+<div class="check"><input data-category="Premium Accompaniments" id="l-dried-figs" name="menu" type="checkbox" value="Dried Figs"/><label for="l-dried-figs">Dried Figs</label></div>
+<div class="check"><input data-category="Premium Accompaniments" id="l-dried-apricots" name="menu" type="checkbox" value="Dried Apricots"/><label for="l-dried-apricots">Dried Apricots</label></div>
+<div class="check dietary-alt"><input data-category="Premium Accompaniments" data-show-when="vegan" id="l-df-choc" name="menu" type="checkbox" value="Vegan Premium Dark Chocolate"/><label for="l-df-choc">Vegan Premium Dark Chocolate</label></div><div class="check dietary-alt"><input data-category="Premium Accompaniments" data-show-when="vegan" id="l-vegan-agave" name="menu" type="checkbox" value="Agave Drizzle"/><label for="l-vegan-agave">Agave Drizzle</label></div></div><div class="choice-count"></div></fieldset>
+<fieldset data-default-legend="Luxe tasting combinations — choose up to 3" data-limit-group="luxe-tasting" data-max="3" data-role="tasting"><legend>Luxe tasting combinations — choose up to 3</legend><div class="choices">
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Tasting Combinations" id="l-taste-1" name="menu" type="checkbox" value="Manchego + Prosciutto + Fig Preserves"/><label for="l-taste-1">Manchego + Prosciutto + Fig Preserves</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Tasting Combinations" id="l-taste-2" name="menu" type="checkbox" value="Brie + Strawberry + Honey"/><label for="l-taste-2">Brie + Strawberry + Honey</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Tasting Combinations" id="l-taste-3" name="menu" type="checkbox" value="Aged Gouda + Artisan Salami + Grape"/><label for="l-taste-3">Aged Gouda + Artisan Salami + Grape</label></div>
+<div class="check"><input data-avoid="vegan gluten" data-category="Tasting Combinations" id="l-taste-4" name="menu" type="checkbox" value="Goat Cheese + Crostini + Hot Honey"/><label for="l-taste-4">Goat Cheese + Crostini + Hot Honey</label></div>
+<div class="check"><input data-avoid="vegetarian vegan porkfree" data-category="Tasting Combinations" id="l-taste-5" name="menu" type="checkbox" value="White Cheddar + Soppressata + Cornichon"/><label for="l-taste-5">White Cheddar + Soppressata + Cornichon</label></div>
+<div class="check"><input data-avoid="vegan" data-category="Tasting Combinations" id="l-taste-6" name="menu" type="checkbox" value="Brie + Blackberry + Fig Preserves"/><label for="l-taste-6">Brie + Blackberry + Fig Preserves</label></div>
+<div class="check dietary-alt"><input data-category="Tasting Combinations" data-show-when="vegan gluten" id="l-df-taste1" name="menu" type="checkbox" value="Plant-Based Brie Style + Strawberry + Agave"/><label for="l-df-taste1">Plant-Based Brie Style + Strawberry + Agave</label></div><div class="check dietary-alt"><input data-category="Tasting Combinations" data-show-when="vegan gluten" id="l-df-taste2" name="menu" type="checkbox" value="Plant-Based Cheddar Style + Grape + Fig Preserves"/><label for="l-df-taste2">Plant-Based Cheddar Style + Grape + Fig Preserves</label></div><div class="check dietary-alt"><input data-category="Tasting Combinations" data-show-when="vegan gluten" id="l-df-taste3" name="menu" type="checkbox" value="Marinated Artichoke + Olive + Gluten-Free Crisp"/><label for="l-df-taste3">Marinated Artichoke + Olive + Gluten-Free Crisp</label></div><div class="check dietary-alt"><input data-category="Tasting Combinations" data-show-when="vegan gluten" id="l-df-taste4" name="menu" type="checkbox" value="Plant-Based Gouda Style + Blackberry + Fruit Preserves"/><label for="l-df-taste4">Plant-Based Gouda Style + Blackberry + Fruit Preserves</label></div></div><div class="choice-count"></div></fieldset>
+</div>
+</div>
+<fieldset id="specialOptions">
+<legend>Special add-ons</legend>
+<p class="menu-note"><strong>Make the wedding experience extra special.</strong> These optional upgrades are added once per event and automatically included in your estimate.</p>
+<div class="choices">
+<div class="check"><input data-price="75" id="addon-sweetheart" name="addon" type="checkbox" value="Bride &amp; Groom Sweetheart Charcuterie Board"/><label for="addon-sweetheart">Bride &amp; Groom Sweetheart Board — $75<br/><span class="mini">A premium personal board prepared just for the couple.</span></label></div>
+<div class="check"><input data-price="125" id="addon-bridalparty" name="addon" type="checkbox" value="Wedding Party Grazing Board"/><label for="addon-bridalparty">Wedding Party Grazing Board — $125<br/><span class="mini">A larger shareable board for the wedding party, approximately 8–10 people.</span></label></div>
+<div class="check"><input data-price="65" id="addon-takehome" name="addon" type="checkbox" value="Take-Home Couple Charcuterie Board"/><label for="addon-takehome">Take-Home Couple Board — $65<br/><span class="mini">A boxed charcuterie board for the couple to enjoy after the reception.</span></label></div>
+<div class="check"><input data-price="75" id="addon-styling" name="addon" type="checkbox" value="Premium Display Styling"/><label for="addon-styling">Premium Display Styling — $75<br/><span class="mini">Elevated risers, decorative greenery, and coordinated table styling.</span></label></div>
+<div class="check"><input data-price="40" id="addon-signage" name="addon" type="checkbox" value="Personalized Wedding Signage"/><label for="addon-signage">Personalized Wedding Signage — $40<br/><span class="mini">Custom couple-name and menu signage for the charcuterie station.</span></label></div>
+</div>
+</fieldset>
+<fieldset>
+<legend>Your request summary</legend>
+<div class="summary" id="summary">Complete the form and your menu summary will appear here.</div>
+</fieldset>
+<div class="payment-box" id="payment">
+<h3>Reserve your date</h3>
+<p class="helper">Choose a 25% booking deposit or pay the current estimated total in full. Final event pricing may change if guest count, menu, travel, rentals, taxes, or venue requirements change.</p>
+<div class="payment-grid">
+<div class="pay-choice"><input id="pay-deposit" name="paymentType" type="radio" value="deposit" checked/><label for="pay-deposit"><strong>25% Booking Deposit</strong><br/><span class="mini">Applied toward your estimated event total.</span></label></div>
+<div class="pay-choice"><input id="pay-full" name="paymentType" type="radio" value="full"/><label for="pay-full"><strong>Pay Estimated Total</strong><br/><span class="mini">Pays the package, setup fee, and selected add-ons shown now.</span></label></div>
+</div>
+<div class="mini">AMOUNT DUE NOW</div>
+<div class="payment-due" id="paymentDue">$0</div>
+<div class="pay-choice" style="margin:12px 0"><input id="bookingTerms" type="checkbox"/><label for="bookingTerms"><strong>I reviewed this estimate and booking information.</strong><br/><span class="mini">Payment reserves the request at the amount shown. Final event terms, cancellation/refund policy, taxes, travel, rentals, and any later changes should be confirmed in your signed service agreement.</span></label></div>
+<button class="btn btn-primary" id="payBtn" type="button" disabled>Continue to Secure Payment</button>
+<div class="payment-status" id="paymentStatus">Choose a package and enter the guest count to enable checkout.</div>
+<div class="secure-note"><span aria-hidden="true">🔒</span><span><strong>Secure checkout:</strong> payment is completed on Stripe's hosted checkout page. Card details are not entered or stored on this website.</span></div>
+</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+<button class="btn btn-soft" id="copyBtn" type="button">Copy Request Summary</button>
+</div>
+<p class="helper">Your request summary can be copied for your records. Payment availability requires the website's Stripe server configuration to be connected.</p>
+</form>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="brand">The Grazing <span>Outlaw</span></div>
+<p>Custom charcuterie cup bars for weddings, receptions and special events.</p>
+<p class="mini">Wedding charcuterie service • Serving Gilbert, Arizona • <a href="mailto:thegrazingoutlaw@gmail.com">thegrazingoutlaw@gmail.com</a></p>
+</div>
+</footer>
+<script>
+    const form = document.getElementById('menuForm');
+    const totalEl = document.getElementById('total');
+    const estimateDetail = document.getElementById('estimateDetail');
+    const summaryEl = document.getElementById('summary');
+    const dietStatus = document.getElementById('dietStatus');
+    const paymentDueEl = document.getElementById('paymentDue');
+    const payBtn = document.getElementById('payBtn');
+    const paymentStatus = document.getElementById('paymentStatus');
+    const packageNames = {classic:'Classic Cup',signature:'Signature Cup',luxe:'Luxe Cup'};
+    const SETUP_FEE = 100;
+    const CLASSIC_STANDARD_PRICE = 12;
+    const CLASSIC_PROMO_PRICE = 5;
+    let lastPackage = null;
+    let promoState = {applied:false, code:'', unitPrice:null};
+    let freeState = {applied:false, code:''};
+
+    function selected(name){
+      return [...form.querySelectorAll(`input[name="${name}"]:checked`)].map(x=>x.value);
+    }
+
+    function activeFilters(){
+      return new Set([...form.querySelectorAll('input[name="diet"]:checked')].map(x=>x.dataset.filter));
+    }
+
+    function words(value){
+      return (value || '').split(/\s+/).filter(Boolean);
+    }
+
+    function shouldShowForDiet(input, filters){
+      const showWhen = words(input.dataset.showWhen);
+      const hideWhen = words(input.dataset.hideWhen);
+      const avoid = words(input.dataset.avoid);
+      if(showWhen.length && !showWhen.some(x=>filters.has(x))) return false;
+      if(hideWhen.some(x=>filters.has(x))) return false;
+      if(avoid.some(x=>filters.has(x))) return false;
+      return true;
+    }
+
+    function updateDietStatus(){
+      const labels = selected('diet');
+      if(!labels.length){
+        dietStatus.textContent = 'No dietary filters selected. The standard package menu will be shown.';
+        return;
+      }
+      dietStatus.textContent = `Filters applied: ${labels.join(', ')}. Incompatible items are hidden and compatible alternatives are shown.`;
+    }
+
+    function updateDietaryLegends(){
+      const filters = activeFilters();
+      document.querySelectorAll('.package-menu fieldset[data-role]').forEach(group=>{
+        const legend = group.querySelector('legend');
+        if(!legend) return;
+        const max = Number(group.dataset.max || 0);
+        const role = group.dataset.role;
+        let text = group.dataset.defaultLegend || legend.textContent;
+        if(role === 'cheese' && filters.has('vegan')) text = `Plant-based cheese alternatives — choose ${max}`;
+        if(role === 'meat' && (filters.has('vegetarian') || filters.has('vegan'))) text = `Vegetarian / plant-based savory options — choose ${max}`;
+        else if(role === 'meat' && filters.has('porkfree')) text = `Pork-free meats — choose ${max}`;
+        if(role === 'crackers' && filters.has('gluten')) text = `Gluten-free crackers / breads — choose ${max}`;
+        if(role === 'tasting' && filters.has('vegan')) text = `Vegan-friendly Luxe tasting combinations — choose up to ${max}`;
+        legend.textContent = text;
+      });
+    }
+
+    function applyDietaryFilters(){
+      const filters = activeFilters();
+      document.querySelectorAll('.package-menu input[name="menu"]').forEach(input=>{
+        const card = input.closest('.check');
+        const visible = shouldShowForDiet(input, filters);
+        if(!visible){
+          input.checked = false;
+          input.disabled = true;
+          card?.classList.add('diet-hidden');
+          card?.classList.remove('is-disabled');
+        }else{
+          input.disabled = false;
+          card?.classList.remove('diet-hidden');
+        }
+      });
+      updateDietaryLegends();
+      updateDietStatus();
+      updateLimitStates();
+    }
+
+    function showPackageMenu(packageValue, clearOld=true){
+      document.querySelectorAll('.package-menu').forEach(menu=>menu.classList.remove('active'));
+      const placeholder = document.getElementById('menuPlaceholder');
+      if(!packageValue){
+        placeholder.style.display='block';
+        applyDietaryFilters();
+        return;
+      }
+      placeholder.style.display='none';
+      const active = document.querySelector(`[data-menu-package="${packageValue}"]`);
+      if(active) active.classList.add('active');
+
+      if(clearOld && lastPackage && lastPackage !== packageValue){
+        document.querySelectorAll('.package-menu input[type="checkbox"]').forEach(cb=>{
+          cb.checked=false;
+          cb.disabled=false;
+          cb.closest('.check')?.classList.remove('is-disabled');
+        });
+      }
+      lastPackage = packageValue;
+      applyDietaryFilters();
+    }
+
+    function updateLimitStates(){
+      document.querySelectorAll('fieldset[data-max]').forEach(group=>{
+        const max = Number(group.dataset.max);
+        const allBoxes = [...group.querySelectorAll('input[type="checkbox"]')];
+        const boxes = allBoxes.filter(b=>!b.closest('.check')?.classList.contains('diet-hidden'));
+        const checked = boxes.filter(b=>b.checked).length;
+        const count = group.querySelector('.choice-count');
+        if(count) count.textContent = `${checked} of ${max} selected • ${boxes.length} compatible choices available`;
+
+        allBoxes.forEach(box=>{
+          const card = box.closest('.check');
+          if(card?.classList.contains('diet-hidden')){
+            box.disabled = true;
+            card.classList.remove('is-disabled');
+            return;
+          }
+          const shouldDisable = checked >= max && !box.checked;
+          box.disabled = shouldDisable;
+          card?.classList.toggle('is-disabled', shouldDisable);
+        });
+      });
+    }
+
+    function menuSelectionsByCategory(){
+      const pkg = form.querySelector('input[name="package"]:checked')?.value;
+      const active = pkg ? document.querySelector(`[data-menu-package="${pkg}"]`) : null;
+      const grouped = {};
+      if(!active) return grouped;
+      active.querySelectorAll('input[name="menu"]:checked').forEach(input=>{
+        const cat=input.dataset.category || 'Menu';
+        (grouped[cat] ||= []).push(input.value);
+      });
+      return grouped;
+    }
+
+    function clearAppliedCode(message=''){
+      promoState = {applied:false, code:'', unitPrice:null};
+      freeState = {applied:false, code:''};
+      const status = document.getElementById('codeStatus');
+      if(status){
+        status.textContent = message || 'Enter your promo code and select Apply Code.';
+        status.classList.remove('error');
+      }
+    }
+
+    function updatePromoVisibility(){
+      // Kept as a no-op for compatibility with the existing package selection flow.
+      // The single promo-code field is available for every package.
+    }
+
+    async function applyAnyCode(){
+      const pkg = form.querySelector('input[name="package"]:checked')?.value;
+      const codeInput = document.getElementById('anyPromoCode');
+      const status = document.getElementById('codeStatus');
+      const button = document.getElementById('applyAnyCodeBtn');
+      const code = (codeInput?.value || '').trim();
+
+      if(!pkg){
+        status.textContent = 'Choose a package before applying a promo code.';
+        status.classList.add('error');
+        return;
+      }
+      if(!code){
+        status.textContent = 'Enter a promo code first.';
+        status.classList.add('error');
+        return;
+      }
+
+      button.disabled = true;
+      status.classList.remove('error');
+      status.textContent = 'Checking promo code…';
+
+      try{
+        const response = await fetch('/api/validate-code',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({package:pkg,promoCode:code})
+        });
+        const data = await response.json();
+        if(!response.ok) throw new Error(data.error || 'Promo code could not be applied.');
+
+        if(data.kind === 'full_comp'){
+          promoState = {applied:false, code:'', unitPrice:null};
+          freeState = {applied:true, code};
+          status.textContent = 'Promo applied: package, $100 setup fee, and selected add-ons are all $0 for this booking.';
+        }else if(data.kind === 'classic_price'){
+          freeState = {applied:false, code:''};
+          promoState = {applied:true, code, unitPrice:Number(data.unitAmountCents)/100};
+          status.textContent = `Promo applied: Classic is now $${promoState.unitPrice.toFixed(2)} per guest for this booking.`;
+        }else{
+          throw new Error('Promo code could not be applied.');
+        }
+        status.classList.remove('error');
+        update();
+      }catch(err){
+        promoState = {applied:false, code:'', unitPrice:null};
+        freeState = {applied:false, code:''};
+        status.textContent = err.message || 'Promo code could not be applied.';
+        status.classList.add('error');
+        update();
+      }finally{
+        button.disabled = false;
+      }
+    }
+
+    function update(){
+      const guestCount = Number(document.getElementById('guests').value || 0);
+      const pkg = form.querySelector('input[name="package"]:checked');
+      const standardPrice = pkg ? Number(pkg.dataset.price) : 0;
+      const price = pkg?.value === 'classic' && promoState.applied ? CLASSIC_PROMO_PRICE : standardPrice;
+      const packageSubtotal = guestCount * price;
+      const addOnInputs = [...form.querySelectorAll('input[name="addon"]:checked')];
+      const addOnTotal = addOnInputs.reduce((sum, input)=>sum + Number(input.dataset.price || 0), 0);
+      const bookingStarted = Boolean(pkg && guestCount);
+      const originalTotal = bookingStarted ? packageSubtotal + SETUP_FEE + addOnTotal : 0;
+      const total = freeState.applied && bookingStarted ? 0 : originalTotal;
+      totalEl.textContent = total ? `$${total.toLocaleString()}` : '$0';
+      estimateDetail.textContent = bookingStarted
+        ? (freeState.applied ? `${packageNames[pkg.value]} • full booking comped to $0 with one-time code` : `${packageNames[pkg.value]} • ${guestCount} guests × $${price}${pkg.value === 'classic' && promoState.applied ? ' (one-time promo)' : ''} + $${SETUP_FEE} setup${addOnTotal ? ` + $${addOnTotal} add-ons` : ''}`)
+        : 'Choose a package and guest count.';
+
+      const paymentType = form.querySelector('input[name="paymentType"]:checked')?.value || 'deposit';
+      const amountDue = bookingStarted ? (freeState.applied ? 0 : (paymentType === 'full' ? total : Math.round(total * 0.25 * 100) / 100)) : 0;
+      paymentDueEl.textContent = amountDue ? `$${amountDue.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}` : '$0';
+      const termsAccepted = document.getElementById('bookingTerms').checked;
+      payBtn.disabled = !(bookingStarted && termsAccepted);
+      if(bookingStarted && !paymentStatus.classList.contains('error')){
+        paymentStatus.textContent = !termsAccepted ? 'Review the estimate and check the confirmation box to enable checkout.' : (freeState.applied ? 'Your one-time full-comp code makes the entire booking $0. Continue to confirm it.' : (paymentType === 'full' ? 'You will be sent to secure checkout for the estimated total.' : 'You will be sent to secure checkout for a 25% booking deposit.')); 
+      }
+
+      const names = document.getElementById('names').value || 'Not provided';
+      const date = document.getElementById('date').value || 'Not provided';
+      const venue = document.getElementById('venue').value || 'Not provided';
+      const email = document.getElementById('email').value || 'Not provided';
+      const phone = document.getElementById('phone').value || 'Not provided';
+      const allergies = document.getElementById('allergies').value || 'None provided';
+      const diet = selected('diet');
+      const pkgText = pkg ? `${packageNames[pkg.value]} ($${price}/guest${pkg.value === 'classic' && promoState.applied ? ', one-time promo applied' : ''}${freeState.applied ? ', FULL COMP applied' : ''})` : 'Not selected';
+      const menu = menuSelectionsByCategory();
+      const menuLines = Object.entries(menu).map(([cat,items])=>`${cat}: ${items.join(', ')}`).join('\n') || 'Menu selections: No selections yet';
+      const addOnLines = addOnInputs.length
+        ? addOnInputs.map(input=>`${input.value} — $${Number(input.dataset.price).toLocaleString()}`).join('\n')
+        : 'None selected';
+      const costBreakdown = bookingStarted
+        ? `Package subtotal: $${packageSubtotal.toLocaleString()}${pkg.value === 'classic' && promoState.applied ? `\nPromo: Classic reduced from $${CLASSIC_STANDARD_PRICE} to $${CLASSIC_PROMO_PRICE} per guest` : ''}\nSetup fee: $${SETUP_FEE.toLocaleString()}\nSpecial add-ons: $${addOnTotal.toLocaleString()}${freeState.applied ? `\nOne-time full-comp code: -$${originalTotal.toLocaleString()}` : ''}\nEstimated total: $${total.toLocaleString()}`
+        : 'Estimated total: Not available';
+
+      summaryEl.textContent = `The Grazing Outlaw Wedding Request
+
+Client: ${names}
+Wedding date: ${date}
+Venue: ${venue}
+Email: ${email}
+Phone: ${phone}
+Guests: ${guestCount || 'Not provided'}
+Package: ${pkgText}
+
+${costBreakdown}
+
+DIETARY / ALLERGY NEEDS
+${diet.length ? diet.join(', ') : 'None selected'}
+Other allergy / dietary notes: ${allergies}
+
+MENU SELECTIONS
+${menuLines}
+
+SPECIAL ADD-ONS
+${addOnLines}`;
+    }
+
+    form.addEventListener('change', e=>{
+      if(e.target.matches('input[name="package"]')){
+        showPackageMenu(e.target.value, true);
+        updatePromoVisibility();
+        if(e.target.value !== 'classic' && promoState.applied){
+          document.getElementById('anyPromoCode').value = '';
+          clearAppliedCode('That promo only applies to the Classic package. Enter another code or switch back to Classic.');
+        }
+      }
+      if(e.target.matches('input[name="diet"]')) applyDietaryFilters();
+      if(e.target.matches('fieldset[data-max] input[type="checkbox"]')) updateLimitStates();
+      update();
+    });
+    form.addEventListener('input', e=>{
+      if(!e.target.matches('input[name="package"], input[name="diet"], fieldset[data-max] input[type="checkbox"]')) update();
+    });
+
+    document.querySelectorAll('[data-package]').forEach(a=>a.addEventListener('click',()=>{
+      const target = document.getElementById(a.dataset.package);
+      if(target){
+        target.checked=true;
+        showPackageMenu(a.dataset.package, true);
+        updatePromoVisibility();
+        if(a.dataset.package !== 'classic' && promoState.applied){
+          document.getElementById('anyPromoCode').value = '';
+          clearAppliedCode('That promo only applies to the Classic package. Enter another code or switch back to Classic.');
+        }
+        update();
+      }
+    }));
+
+    document.getElementById('applyAnyCodeBtn').addEventListener('click', applyAnyCode);
+
+    document.getElementById('anyPromoCode').addEventListener('input', ()=>{
+      if(promoState.applied || freeState.applied){
+        promoState = {applied:false, code:'', unitPrice:null};
+        freeState = {applied:false, code:''};
+        const status = document.getElementById('codeStatus');
+        status.textContent = 'Promo code changed. Select Apply Code again.';
+        status.classList.remove('error');
+        update();
+      }
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async()=>{
+      update();
+      try{
+        await navigator.clipboard.writeText(summaryEl.textContent);
+        const b=document.getElementById('copyBtn');
+        const old=b.textContent;b.textContent='Copied!';setTimeout(()=>b.textContent=old,1800);
+      }catch(e){alert('Select and copy the request summary manually.');}
+    });
+
+    payBtn.addEventListener('click', async()=>{
+      update();
+      const pkg = form.querySelector('input[name="package"]:checked');
+      const guestCount = Number(document.getElementById('guests').value || 0);
+      if(!pkg || guestCount < 1){
+        paymentStatus.textContent = 'Choose a package and enter the guest count before checkout.';
+        paymentStatus.classList.add('error');
+        return;
+      }
+      const names = document.getElementById('names').value.trim();
+      const weddingDate = document.getElementById('date').value;
+      const email = document.getElementById('email').value.trim();
+      if(!names || !weddingDate || !email || !document.getElementById('email').checkValidity()){
+        paymentStatus.textContent = 'Enter the client names, wedding date, and a valid email address before checkout.';
+        paymentStatus.classList.add('error');
+        return;
+      }
+      if(!document.getElementById('bookingTerms').checked){
+        paymentStatus.textContent = 'Review the estimate and check the confirmation box before checkout.';
+        paymentStatus.classList.add('error');
+        return;
+      }
+      paymentStatus.classList.remove('error');
+      paymentStatus.textContent = 'Opening secure checkout…';
+      payBtn.disabled = true;
+      try{
+        const payload = {
+          package: pkg.value,
+          guestCount,
+          addOns: [...form.querySelectorAll('input[name="addon"]:checked')].map(x=>x.id),
+          paymentType: form.querySelector('input[name="paymentType"]:checked')?.value || 'deposit',
+          clientName: names,
+          email,
+          phone: document.getElementById('phone').value.trim(),
+          weddingDate,
+          venue: document.getElementById('venue').value.trim(),
+          dietary: selected('diet'),
+          allergyNotes: document.getElementById('allergies').value.trim(),
+          menuSelections: menuSelectionsByCategory(),
+          promoCode: freeState.applied ? freeState.code : (promoState.applied ? promoState.code : ''),
+          termsAccepted: true
+        };
+        const response = await fetch('/api/create-checkout-session',{
+          method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+        });
+        const data = await response.json();
+        if(!response.ok) throw new Error(data.error || 'Checkout could not be started.');
+        window.location.href = data.url;
+      }catch(err){
+        paymentStatus.textContent = err.message || 'Checkout could not be started. Please try again.';
+        paymentStatus.classList.add('error');
+        payBtn.disabled = false;
+      }
+    });
+
+    const qs = new URLSearchParams(window.location.search);
+    if(qs.get('payment') === 'cancelled'){
+      paymentStatus.textContent = 'Payment was cancelled. Your menu selections have not been charged.';
+    }
+
+    showPackageMenu(null, false);
+    updatePromoVisibility();
+    applyDietaryFilters();
+    update();
+</script>
+</body>
+</html>
