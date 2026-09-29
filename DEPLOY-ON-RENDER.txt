@@ -1,0 +1,56 @@
+THE GRAZING OUTLAW — RENDER DEPLOYMENT
+
+1) Upload all files in this folder to the ROOT of your GitHub repository.
+   The repository root should show package.json, server.js, render.yaml, and public/.
+
+2) Render service settings:
+   Build Command: npm install
+   Start Command: npm start
+
+3) Render → Environment variables:
+   STRIPE_SECRET_KEY=your Stripe secret key
+   STRIPE_WEBHOOK_SECRET=your Stripe webhook signing secret
+   PUBLIC_URL=https://YOUR-RENDER-SITE.onrender.com
+   DEPOSIT_PERCENT=25
+   CLASSIC_PROMO_CODE=your private $5 Classic promo code (optional)
+   FREE_ORDER_CODE=your private full-comp code (optional)
+
+   GMAIL_USER=thegrazingoutlaw@gmail.com
+   GMAIL_APP_PASSWORD=your 16-character Google App Password
+   ORDER_NOTIFICATION_EMAIL=thegrazingoutlaw@gmail.com
+   EMAIL_FROM_NAME=The Grazing Outlaw
+
+   IMPORTANT: GMAIL_APP_PASSWORD is NOT your normal Gmail password.
+   Keep it only in Render Environment. Never commit it to GitHub.
+
+4) Stripe webhook:
+   Endpoint URL:
+   https://YOUR-RENDER-SITE.onrender.com/api/webhook
+
+   Subscribe to:
+   - checkout.session.completed
+   - checkout.session.async_payment_succeeded
+   - checkout.session.expired
+
+   Copy the webhook signing secret (starts with whsec_) into
+   STRIPE_WEBHOOK_SECRET in Render.
+
+5) Gmail setup:
+   - Turn on Google 2-Step Verification for thegrazingoutlaw@gmail.com.
+   - Create a Google App Password for this website.
+   - Put the generated 16-character value in GMAIL_APP_PASSWORD on Render.
+   - Do not put the App Password in GitHub or public/index.html.
+
+6) Redeploy the latest commit in Render.
+
+7) Check:
+   https://YOUR-RENDER-SITE.onrender.com/health
+
+   It should show:
+   "stripeConfigured": true
+   "emailConfigured": true
+
+8) Test with Stripe test mode first. Use an email address you can access.
+   After successful test checkout:
+   - the customer should receive a receipt / booking confirmation
+   - thegrazingoutlaw@gmail.com should receive the full order
