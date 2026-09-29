@@ -1,0 +1,38 @@
+THE GRAZING OUTLAW — RENDER SETUP (NO GMAIL REQUIRED)
+
+1) Upload these files to your GitHub repository.
+2) Redeploy the Render web service.
+3) In Render > Environment set:
+   STRIPE_SECRET_KEY=your Stripe secret key
+   STRIPE_WEBHOOK_SECRET=your Stripe webhook signing secret
+   PUBLIC_URL=https://your-service.onrender.com
+   DEPOSIT_PERCENT=25
+   CLASSIC_PROMO_CODE=your private code (optional)
+   FREE_ORDER_CODE=your first full-comp code (optional)
+   FREE_ORDER_CODE_2=your second full-comp code (optional)
+   REFUND_ADMIN_TOKEN=a long private owner password/token
+   BUSINESS_TIMEZONE=America/Phoenix
+
+NO Gmail, Google OAuth, SMTP, or app password is needed.
+
+OWNER ORDERS:
+https://your-service.onrender.com/orders-admin.html
+Use REFUND_ADMIN_TOKEN to load all paid/complimentary orders and refund requests.
+
+REFUNDS:
+https://your-service.onrender.com/refund-admin.html
+Use the same REFUND_ADMIN_TOKEN.
+
+CUSTOMER RECEIPTS:
+The checkout sends the customer's email to Stripe as receipt_email. In LIVE mode Stripe sends the payment receipt directly. The success page also provides the Stripe receipt link when available and a Print / Save Confirmation button.
+
+WEBHOOK:
+Keep your Stripe webhook pointing to:
+https://your-service.onrender.com/api/webhook
+
+Recommended events:
+checkout.session.completed
+checkout.session.async_payment_succeeded
+checkout.session.expired
+refund.updated
+refund.failed

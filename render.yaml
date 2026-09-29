@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: the-grazing-outlaw
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: DEPOSIT_PERCENT
+        value: 25
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: CLASSIC_PROMO_CODE
+        sync: false
+      - key: FREE_ORDER_CODE
+        sync: false
+      - key: FREE_ORDER_CODE_2
+        sync: false
+      - key: REFUND_ADMIN_TOKEN
+        sync: false
+      - key: BUSINESS_TIMEZONE
+        value: America/Phoenix
