@@ -33,3 +33,7 @@ See `.env.example`. Gmail variables are no longer needed.
 - `public/success.html` — payment confirmation and receipt link
 - `public/orders-admin.html` — private order dashboard
 - `public/refund-admin.html` — private refund controls
+
+
+### Third one-time 100% free promo
+Set `FREE_ORDER_CODE_3` in Render to a private code of your choice. It works in the existing Promo Code field, makes the full booking total $0, and can be redeemed once independently of the other free codes.

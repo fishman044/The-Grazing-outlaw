@@ -36,3 +36,6 @@ checkout.session.async_payment_succeeded
 checkout.session.expired
 refund.updated
 refund.failed
+
+Optional third one-time 100% free code:
+FREE_ORDER_CODE_3=YOUR_PRIVATE_CODE

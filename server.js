@@ -14,12 +14,14 @@ const DEPOSIT_PERCENT = Math.min(100, Math.max(1, Number(process.env.DEPOSIT_PER
 const CLASSIC_PROMO_CODE = String(process.env.CLASSIC_PROMO_CODE || '').trim().toUpperCase();
 const FREE_ORDER_CODE = String(process.env.FREE_ORDER_CODE || '').trim().toUpperCase();
 const FREE_ORDER_CODE_2 = String(process.env.FREE_ORDER_CODE_2 || '').trim().toUpperCase();
+const FREE_ORDER_CODE_3 = String(process.env.FREE_ORDER_CODE_3 || '').trim().toUpperCase();
 const REFUND_ADMIN_TOKEN = String(process.env.REFUND_ADMIN_TOKEN || '').trim();
 const BUSINESS_TIMEZONE = String(process.env.BUSINESS_TIMEZONE || 'America/Phoenix').trim();
 const CLASSIC_PROMO_ID = 'classic-five-one-time';
 const CLASSIC_PROMO_UNIT_AMOUNT = 500;
 const FREE_COUPON_ID = 'grazing_outlaw_free_once';
 const FREE_COUPON_ID_2 = 'grazing_outlaw_free_once_2';
+const FREE_COUPON_ID_3 = 'grazing_outlaw_free_once_3';
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null;
 
 let promoReservation = null;
@@ -315,7 +317,7 @@ async function getOrCreateFreeCoupon(couponId, label) {
 
 async function validateFreeOrderCode(code) {
   const normalized = normalizePromo(code);
-  if (!FREE_ORDER_CODE && !FREE_ORDER_CODE_2) throw new Error('The full-comp codes are not configured yet.');
+  if (!FREE_ORDER_CODE && !FREE_ORDER_CODE_2 && !FREE_ORDER_CODE_3) throw new Error('The full-comp codes are not configured yet.');
   if (!normalized) throw new Error('Enter a full-comp code first.');
 
   let couponId = '';
@@ -326,6 +328,9 @@ async function validateFreeOrderCode(code) {
   } else if (FREE_ORDER_CODE_2 && normalized === FREE_ORDER_CODE_2) {
     couponId = FREE_COUPON_ID_2;
     label = '2';
+  } else if (FREE_ORDER_CODE_3 && normalized === FREE_ORDER_CODE_3) {
+    couponId = FREE_COUPON_ID_3;
+    label = '3';
   } else {
     throw new Error('That full-comp code is not valid.');
   }
@@ -344,7 +349,8 @@ async function resolvePromoCode(code, packageId, { reserve = false } = {}) {
 
   // Full-comp codes work for every package and take priority over package-specific promos.
   if ((FREE_ORDER_CODE && normalized === FREE_ORDER_CODE) ||
-      (FREE_ORDER_CODE_2 && normalized === FREE_ORDER_CODE_2)) {
+      (FREE_ORDER_CODE_2 && normalized === FREE_ORDER_CODE_2) ||
+      (FREE_ORDER_CODE_3 && normalized === FREE_ORDER_CODE_3)) {
     const coupon = await validateFreeOrderCode(normalized);
     return { kind: 'full_comp', coupon };
   }
@@ -436,6 +442,7 @@ app.get('/health', (req, res) => res.status(200).json({
   classicPromoConfigured: Boolean(CLASSIC_PROMO_CODE),
   freeOrderCodeConfigured: Boolean(FREE_ORDER_CODE),
   freeOrderCode2Configured: Boolean(FREE_ORDER_CODE_2),
+  freeOrderCode3Configured: Boolean(FREE_ORDER_CODE_3),
   stripeWebhookConfigured: Boolean(STRIPE_WEBHOOK_SECRET),
   refundAdminConfigured: Boolean(REFUND_ADMIN_TOKEN),
   businessTimezone: BUSINESS_TIMEZONE,
@@ -452,6 +459,7 @@ app.get('/diagnostics', (req, res) => {
     classicPromoConfigured: Boolean(CLASSIC_PROMO_CODE),
     freeOrderCodeConfigured: Boolean(FREE_ORDER_CODE),
     freeOrderCode2Configured: Boolean(FREE_ORDER_CODE_2),
+  freeOrderCode3Configured: Boolean(FREE_ORDER_CODE_3),
     stripeWebhookConfigured: Boolean(STRIPE_WEBHOOK_SECRET),
     refundAdminConfigured: Boolean(REFUND_ADMIN_TOKEN),
     node: process.version,
